@@ -1,0 +1,282 @@
+<html>
+  <head>
+    <title>Calendar Heatmap</title>
+
+    <style>
+      .body {
+        height: 97%;
+      }
+
+      svg {
+        height: 1800;
+        width: 97%;
+      }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-color/1.2.1/d3-color.js"></script>
+  </head>
+  <body >
+    <h3>Calender Heatmap</h3>
+    <h4>Air Quality Index </h4>
+    <h5>&nbsp &nbsp &nbsp &nbsp 
+ &nbsp &nbsp &nbsp &nbsp    January &nbsp &nbsp &nbsp &nbsp  February &nbsp  &nbsp &nbsp March &nbsp &nbsp  &nbsp &nbsp April &nbsp &nbsp &nbsp &nbsp  May &nbsp &nbsp &nbsp &nbsp  June &nbsp &nbsp &nbsp &nbsp  July &nbsp &nbsp  &nbsp &nbsp August &nbsp &nbsp &nbsp &nbsp  September &nbsp  &nbsp &nbsp October &nbsp &nbsp &nbsp November &nbsp &nbsp &nbsp &nbsp December</h5>
+    <svg id="svg"></svg>
+      
+    <script> const sample = [
+     { Date: "2019-09-01", ValueOfAQI: "12" },
+        { Date: "2019-09-02", ValueOfAQI: "31" },
+        { Date: "2019-09-03", ValueOfAQI: "41" },
+        { Date: "2019-09-04", ValueOfAQI: "30" },
+        { Date: "2019-09-05", ValueOfAQI: "49" },
+        { Date: "2019-09-06", ValueOfAQI: "35" },
+        { Date: "2019-09-07", ValueOfAQI: "53" },
+        { Date: "2019-09-08", ValueOfAQI: "38" },
+        { Date: "2019-09-09", ValueOfAQI: "43" },
+        { Date: "2019-09-10", ValueOfAQI: "47" },
+         { Date: "2019-09-11", ValueOfAQI: "54" },
+        { Date: "2019-09-12", ValueOfAQI: "42" },
+        { Date: "2019-09-13", ValueOfAQI: "48" },
+        { Date: "2019-09-14", ValueOfAQI: "51" },
+        { Date: "2019-09-15", ValueOfAQI: "40" },
+        { Date: "2019-09-16", ValueOfAQI: "30" },
+        { Date: "2019-09-17", ValueOfAQI: "25" },
+        { Date: "2019-09-18", ValueOfAQI: "58" },
+        { Date: "2019-09-19", ValueOfAQI: "45" },
+        { Date: "2019-09-20", ValueOfAQI: "35" },
+        { Date: "2019-09-21", ValueOfAQI: "29" },
+        { Date: "2019-09-22", ValueOfAQI: "22" },
+        { Date: "2019-09-23", ValueOfAQI: "33" },
+        { Date: "2019-09-24", ValueOfAQI: "49" },
+        { Date: "2019-09-25", ValueOfAQI: "48" },
+        { Date: "2019-09-26", ValueOfAQI: "63" },
+        { Date: "2019-09-27", ValueOfAQI: "32" },
+        { Date: "2019-09-28", ValueOfAQI: "26" },
+        { Date: "2019-09-29", ValueOfAQI: "39" },
+        { Date: "2019-09-30", ValueOfAQI: "54" },
+        { Date: "2019-10-01", ValueOfAQI: "12" },
+        { Date: "2019-10-02", ValueOfAQI: "31" },
+        { Date: "2019-10-03", ValueOfAQI: "41" },
+        { Date: "2019-10-04", ValueOfAQI: "30" },
+        { Date: "2019-10-05", ValueOfAQI: "49" },
+        { Date: "2019-10-06", ValueOfAQI: "35" },
+        { Date: "2019-10-07", ValueOfAQI: "53" },
+        { Date: "2019-10-08", ValueOfAQI: "38" },
+        { Date: "2019-10-09", ValueOfAQI: "43" },
+        { Date: "2019-10-10", ValueOfAQI: "33" },
+          { Date: "2019-10-11", ValueOfAQI: "54" },
+        { Date: "2019-10-12", ValueOfAQI: "42" },
+        { Date: "2019-10-13", ValueOfAQI: "48" },
+        { Date: "2019-10-14", ValueOfAQI: "51" },
+        { Date: "2019-10-15", ValueOfAQI: "40" },
+        { Date: "2019-10-16", ValueOfAQI: "30" },
+        { Date: "2019-10-17", ValueOfAQI: "25" },
+        { Date: "2019-10-18", ValueOfAQI: "58" },
+        { Date: "2019-10-19", ValueOfAQI: "45" },
+        { Date: "2019-10-20", ValueOfAQI: "35" },
+        { Date: "2019-10-21", ValueOfAQI: "29" },
+        { Date: "2019-10-22", ValueOfAQI: "22" },
+        { Date: "2019-10-23", ValueOfAQI: "33" },
+        { Date: "2019-10-24", ValueOfAQI: "49" },
+        { Date: "2019-10-25", ValueOfAQI: "48" },
+        { Date: "2019-10-26", ValueOfAQI: "63" },
+        { Date: "2019-10-27", ValueOfAQI: "32" },
+        { Date: "2019-10-28", ValueOfAQI: "26" },
+        { Date: "2019-10-29", ValueOfAQI: "39" },
+        { Date: "2019-10-30", ValueOfAQI: "54" },
+        { Date: "2019-10-31", ValueOfAQI: "43" },
+         { Date: "2019-11-01", ValueOfAQI: "12" },
+        { Date: "2019-11-02", ValueOfAQI: "31" },
+        { Date: "2019-11-03", ValueOfAQI: "41" },
+        { Date: "2019-11-04", ValueOfAQI: "30" },
+        { Date: "2019-11-05", ValueOfAQI: "49" },
+        { Date: "2019-11-06", ValueOfAQI: "35" },
+        { Date: "2019-11-07", ValueOfAQI: "53" },
+        { Date: "2019-11-08", ValueOfAQI: "38" },
+        { Date: "2019-11-09", ValueOfAQI: "43" },
+        { Date: "2019-11-10", ValueOfAQI: "32" },
+          { Date: "2019-11-11", ValueOfAQI: "54" },
+        { Date: "2019-11-12", ValueOfAQI: "42" },
+        { Date: "2019-11-13", ValueOfAQI: "48" },
+        { Date: "2019-11-14", ValueOfAQI: "51" },
+        { Date: "2019-11-15", ValueOfAQI: "40" },
+        { Date: "2019-11-16", ValueOfAQI: "30" },
+        { Date: "2019-11-17", ValueOfAQI: "25" },
+        { Date: "2019-11-18", ValueOfAQI: "58" },
+        { Date: "2019-11-19", ValueOfAQI: "45" },
+        { Date: "2019-11-20", ValueOfAQI: "35" },
+        { Date: "2019-11-21", ValueOfAQI: "29" },
+        { Date: "2019-11-22", ValueOfAQI: "22" },
+        { Date: "2019-11-23", ValueOfAQI: "33" },
+        { Date: "2019-11-24", ValueOfAQI: "49" },
+        { Date: "2019-11-25", ValueOfAQI: "48" },
+        { Date: "2019-11-26", ValueOfAQI: "63" },
+        { Date: "2019-11-27", ValueOfAQI: "32" },
+        { Date: "2019-11-28", ValueOfAQI: "26" },
+        { Date: "2019-11-29", ValueOfAQI: "39" },
+        
+       ];
+      sample.sort((a, b) => new Date(a.Date) - new Date(b.Date));
+
+      const dateValues = sample.map(dv => ({
+        date: d3.timeDay(new Date(dv.Date)),
+        value: Number(dv.ValueOfAQI)
+      }));
+
+      const svg = d3.select("#svg");
+      const { width, height } = document
+        .getElementById("svg")
+        .getBoundingClientRect();
+
+
+      function draw() {
+        const years = d3
+          .nest()
+          .key(d => d.date.getUTCFullYear())
+          .entries(dateValues)
+          .reverse();
+
+        const values = dateValues.map(c => c.value);
+        const maxValue = d3.max(values);
+        const minValue = d3.min(values);
+
+        const cellSize = 15;
+        const yearHeight = cellSize * 7;
+
+        const group = svg.append("g");
+
+        const year = group
+          .selectAll("g")
+          .data(years)
+          .join("g")
+          .attr(
+            "transform",
+            (d, i) => `translate(50, ${yearHeight * i + cellSize * 1.5})`
+          );
+
+        year
+          .append("text")
+          .attr("x", -5)
+          .attr("y", -30)
+          .attr("text-anchor", "end")
+          .attr("font-size", 16)
+          .attr("font-weight", 550)
+          .attr("transform", "rotate(270)")
+          .text(d => d.key);
+
+        const formatDay = d =>
+          ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"][d.getUTCDay()];
+        const countDay = d => d.getUTCDay();
+        const timeWeek = d3.utcSunday;
+        const formatDate = d3.utcFormat("%x");
+        const colorFn = d3
+          .scaleSequential(d3.interpolateYlOrRd)
+          .domain([Math.floor(minValue), Math.ceil(maxValue)]);
+        const format = d3.format("+.2%");
+
+        year
+          .append("g")
+          .attr("text-anchor", "end")
+          .selectAll("text")
+          .data(d3.range(7).map(i => new Date(1995, 0, i)))
+          .join("text")
+          .attr("x", -5)
+          .attr("y", d => (countDay(d) + 0.5) * cellSize)
+          .attr("dy", "0.31em")
+          .attr("font-size", 12)
+          .text(formatDay);
+
+        year
+          .append("g")
+          .selectAll("rect")
+          .data(d => d.values)
+          .join("rect")
+          .attr("width", cellSize - 1.5)
+          .attr("height", cellSize - 1.5)
+          .attr(
+            "x",
+            (d, i) => timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 10
+          )
+          .attr("y", d => countDay(d.date) * cellSize + 0.5)
+          .attr("fill", d => colorFn(d.value))
+          .append("title")
+          .text(d => `${formatDate(d.date)}: ${d.value.toFixed(2)}`);
+
+        const legend = group
+          .append("g")
+          .attr(
+            "transform",
+            `translate(10, ${years.length * yearHeight + cellSize * 4})`
+          );
+
+        const categoriesCount = 10;
+        const categories = [...Array(categoriesCount)].map((_, i) => {
+          const upperBound = (maxValue / categoriesCount) * (i + 1);
+          const lowerBound = (maxValue / categoriesCount) * i;
+
+          return {
+            upperBound,
+            lowerBound,
+            color: d3.interpolateYlOrRd(upperBound / maxValue),
+            selected: true
+          };
+        });
+
+        const legendWidth = 60;
+
+        function toggle(legend) {
+          const { lowerBound, upperBound, selected } = legend;
+
+          legend.selected = !selected;
+
+          const highlightedDates = years.map(y => ({
+            key: y.key,
+            values: y.values.filter(
+              v => v.value > lowerBound && v.value <= upperBound
+            )
+          }));
+
+          year
+            .data(highlightedDates)
+            .selectAll("rect")
+            .data(d => d.values, d => d.date)
+            .transition()
+            .duration(500)
+            .attr("fill", d => (legend.selected ? colorFn(d.value) : "white"));
+        }
+
+        legend
+          .selectAll("rect")
+          .data(categories)
+          .enter()
+          .append("rect")
+          .attr("fill", d => d.color)
+          .attr("x", (d, i) => legendWidth * i)
+          .attr("width", legendWidth)
+          .attr("height", 15)
+          .on("click", toggle);
+
+        legend
+          .selectAll("text")
+          .data(categories)
+          .join("text")
+          .attr("transform", "rotate(90)")
+          .attr("y", (d, i) => -legendWidth * i)
+          .attr("dy", -30)
+          .attr("x", 18)
+          .attr("text-anchor", "start")
+          .attr("font-size", 11)
+          .text(d => `${d.lowerBound.toFixed(2)} - ${d.upperBound.toFixed(2)}`);
+
+        legend
+          .append("text")
+          .attr("dy", -5)
+          .attr("font-size", 14)
+          .attr("text-decoration", "underline")
+          .text("Click on category to select/deselect days");
+      }
+
+      draw();
+    </script>
+  </body>
+</html>
