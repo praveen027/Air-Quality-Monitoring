@@ -71,52 +71,47 @@ https://community.thingspeak.com/tutorials/twilio/make-calls-with-twilio-using-t
 ## Connections
 
 ### Arduino Mega to sensors
-a0 -> mq135 (analog)
-a1 -> mq 9  (analog)
-a2 -> yl-83 (analog)
-a3 -> lm-393 (analog)
-a4 -> sound sensor (analog)
-d6 -> dht 11 (digital)
+* a0 -> mq135 (analog)
+* a1 -> mq 9  (analog)
+* a2 -> yl-83 (analog)
+* a3 -> lm-393 (analog)
+* a4 -> sound sensor (analog)
+* ~6 -> dht 11 (digital)
 
 ### LCD to Arduino
 
-RS -> ~12
-Enable -> ~11 
-D4 -> ~5
-D5 -> ~4
-D6 -> ~3
-D7 -> ~2
+* RS -> ~12
+* Enable -> ~11 
+* D4 -> ~5
+* D5 -> ~4
+* D6 -> ~3
+* D7 -> ~2
 
 
 ### ESP8266 to 4051 MUX
 
-D4 -> S0 (A)
-
-D3 -> S1 (B)
-
-D2 -> S2 (C)
-
-A0 -> Common
-
-3.3v -> VCC
-
-G -> GND
-
-G -> Inhibit
-
-G -> VEE
+*D4 -> S0 (A)
+* D3 -> S1 (B)
+* D2 -> S2 (C)
+* A0 -> Common
+* 3.3v -> VCC
+* G -> GND
+* G -> Inhibit
+* G -> VEE
 
 <br/>
 3 select pins, labeled A B and C (These are digital pins)
+<br/>
 A Common pin
+<br/>
 8 option pins (labeled X0 - X7)
 
 ### 4051 MUX to sensors
 
-X1 -> mq135 (analog)
-X0 -> mq 9  (analog)
-X2 -> yl-83 (analog)
-X3 -> lm-393 (analog)
+* X1 -> mq135 (analog)
+* X0 -> mq 9  (analog)
+* X2 -> yl-83 (analog)
+* X3 -> lm-393 (analog)
 
 ## Contributing
 
