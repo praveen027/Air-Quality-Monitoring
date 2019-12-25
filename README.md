@@ -124,7 +124,7 @@ Please read [CONTRIBUTING.md](https://www.github.com/praveen027) for details on 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
