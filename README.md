@@ -90,7 +90,7 @@ https://community.thingspeak.com/tutorials/twilio/make-calls-with-twilio-using-t
 
 ### ESP8266 to 4051 MUX
 
-*D4 -> S0 (A)
+* D4 -> S0 (A)
 * D3 -> S1 (B)
 * D2 -> S2 (C)
 * A0 -> Common
